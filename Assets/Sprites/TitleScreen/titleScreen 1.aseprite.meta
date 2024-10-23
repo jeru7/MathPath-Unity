@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 54514152c04ebb93499136fd8c53f4f2
+guid: 9f865fcb235835b14b79fc0a61a2142a
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -32,7 +32,7 @@ ScriptedImporter:
     sRGBTexture: 1
     spriteMode: 2
     spriteExtrude: 1
-    spriteMeshType: 0
+    spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
     spritePixelsToUnits: 100
@@ -97,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638653007791372990
+  platformSettingsDirtyTick: 638653088162326120
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: buttons
+  - name: titleScreen 1
     originalName: 
-    pivot: {x: 0.4805195, y: -1.590909}
+    pivot: {x: 0.5, y: -0.044077136}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 231
-      height: 66
-    spriteID: 1296aacbb27d6d2aa82c2901222d193a
+      width: 664
+      height: 363
+    spriteID: e64d844185cc49fde89127b0d036be80
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -142,7 +142,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
   spriteSheetImportData:
-  - name: buttons_0
+  - name: titleScreen 1_0
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -150,10 +150,90 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
+      y: 187
+      width: 320
+      height: 180
+    spriteID: 93c2170db3dffd64ba06c92b5f1c804b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: titleScreen 1_1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 340
+      y: 186
+      width: 321
+      height: 180
+    spriteID: 9a3214def1d2ec4559686050928e3f7f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: titleScreen 1_2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 6
+      y: 116
+      width: 320
+      height: 59
+    spriteID: 511cb4316b0b8c6349eafc7042cb51f6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: titleScreen 1_3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 348
+      y: 103
+      width: 320
+      height: 69
+    spriteID: abb9b122f42d52151bb62eb25f604d9e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: titleScreen 1_6
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 31
       y: 4
-      width: 33
-      height: 39
-    spriteID: 10adf9f64e8100b678543742ac9502a6
+      width: 138
+      height: 72
+    spriteID: c4173ca4b98342f74a2e034525c3f072
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -162,18 +242,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: buttons_1
+  - name: titleScreen 1_8
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 42
-      y: 14
-      width: 39
-      height: 20
-    spriteID: d59cefbfef922509e8913be2b1bf5364
+      x: 210
+      y: 52
+      width: 46
+      height: 12
+    spriteID: 2b4c3386534cb8b0e8542bc11b7780fc
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -182,18 +262,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: buttons_2
+  - name: titleScreen 1_9
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 150
-      y: 31
-      width: 17
-      height: 17
-    spriteID: 1a66c8b47fba09a4280bd5cf17169551
+      x: 280
+      y: 51
+      width: 72
+      height: 14
+    spriteID: 6bc28e932dde71c6bab4702e5ed1e3e6
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -202,18 +282,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: buttons_3
+  - name: titleScreen 1_10
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 175
-      y: 10
-      width: 60
-      height: 60
-    spriteID: 514b8cd384f68c2f3ba0203eb8dae8d3
+      x: 379
+      y: 53
+      width: 38
+      height: 12
+    spriteID: 8010bc61e770165caa451ed1643bea38
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -224,21 +304,21 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   asepriteLayers:
   - layerIndex: 0
-    guid: 1669559277
-    name: buttons
+    guid: 317486249
+    name: titleScreen 1
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: buttons
+    - name: titleScreen 1
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 49
-        y: 105
-        width: 231
-        height: 66
-      spriteId: 1296aacbb27d6d2aa82c2901222d193a
+        x: 11
+        y: 16
+        width: 664
+        height: 363
+      spriteId: e64d844185cc49fde89127b0d036be80
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -305,4 +385,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 320, y: 180}
+  canvasSize: {x: 686, y: 383}
