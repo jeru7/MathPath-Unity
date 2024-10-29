@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a3fa532d2a131f3d397572544a7b2893
+guid: 138cb27ab3ef2511190dfcac1fbba088
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -71,7 +71,7 @@ ScriptedImporter:
     textureFormatSet: 0
     applyGammaDecoding: 0
   previousAsepriteImporterSettings:
-    fileImportMode: 1
+    fileImportMode: 0
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
@@ -84,7 +84,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   asepriteImporterSettings:
-    fileImportMode: 1
+    fileImportMode: 0
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
@@ -97,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638658342219584320
+  platformSettingsDirtyTick: 638658342566012050
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: settings board
+  - name: buttons 1
     originalName: 
-    pivot: {x: 0.5019157, y: -0.10666668}
+    pivot: {x: 0.4805195, y: -1.590909}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 261
-      height: 150
-    spriteID: 632f3f5bfdea28d44add600623983181
+      width: 231
+      height: 66
+    spriteID: 56aef8b642d1aaca8808c51476d121b3
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -141,24 +141,104 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  spriteSheetImportData: []
+  spriteSheetImportData:
+  - name: buttons 1_0
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 33
+      height: 39
+    spriteID: 08a18b8e8f2cdc5398832f5c8e4f1cf0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: buttons 1_1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 42
+      y: 14
+      width: 39
+      height: 20
+    spriteID: a838587208f540c79b212682925c4082
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: buttons 1_2
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 150
+      y: 31
+      width: 17
+      height: 17
+    spriteID: 07a86932dd9203d789d09f543c5aadb4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: buttons 1_3
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 175
+      y: 10
+      width: 60
+      height: 60
+    spriteID: 2c3688cdf47ca002b99901da785ca733
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
   asepriteLayers:
   - layerIndex: 0
-    guid: 1374489643
-    name: settings board
+    guid: 502771344
+    name: buttons 1
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: settings board
+    - name: buttons 1
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 29
-        y: 16
-        width: 261
-        height: 150
-      spriteId: 632f3f5bfdea28d44add600623983181
+        x: 49
+        y: 105
+        width: 231
+        height: 66
+      spriteId: 56aef8b642d1aaca8808c51476d121b3
     linkedCells: []
     parentIndex: -1
   platformSettings:
