@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MenuController : UIController
+public class MenuController : MonoBehaviour 
 {
     public AudioManager audioManager;
 
@@ -27,9 +27,9 @@ public class MenuController : UIController
     /// </summary>
     private void InitializeMenu()
     {
-        SetPanelActive(titleScreen, true);
-        SetPanelActive(login, false);
-        SetPanelActive(settings, false);
+        titleScreen.SetActive(true);
+        login.SetActive(false);
+        settings.SetActive(false);
     }
 
     /// <summary>
@@ -39,30 +39,30 @@ public class MenuController : UIController
     public void StartGame()
     {
         audioManager.PlaySFX(clickSound);
-        SetPanelActive(login, true);
-        SetPanelActive(loginForm, true);
-        SetPanelActive(titleScreen, false);
+        login.SetActive(true);
+        loginForm.SetActive(true);
+        titleScreen.SetActive(false);
     }
 
     public void CloseLoginForm()
     {
         audioManager.PlaySFX(clickSound);
-        SetPanelActive(login, false);
-        SetPanelActive(titleScreen, true);
+        login.SetActive(false);
+        titleScreen.SetActive(true);
     }
 
     public void OpenForgotPassForm()
     {
         audioManager.PlaySFX(clickSound);
-        SetPanelActive(loginForm, false);
-        SetPanelActive(forgotPassForm, true);
+        loginForm.SetActive(false);
+        forgotPassForm.SetActive(true);
     }
 
     public void CloseForgotPassForm()
     {
         audioManager.PlaySFX(clickSound);
-        SetPanelActive(forgotPassForm, false);
-        SetPanelActive(loginForm, true);
+        forgotPassForm.SetActive(false);
+        loginForm.SetActive(true);
     }
 
     /// <summary>
@@ -72,8 +72,8 @@ public class MenuController : UIController
     public void OpenSettings()
     {
         audioManager.PlaySFX(clickSound);
-        SetPanelActive(settings, true);
-        SetPanelActive(titleScreen, false);
+        settings.SetActive(true);
+        titleScreen.SetActive(false);
     }
 
     /// <summary>
@@ -84,8 +84,8 @@ public class MenuController : UIController
     public void CloseSettings()
     {
         audioManager.PlaySFX(clickSound);
-        SetPanelActive(settings, false);
-        SetPanelActive(titleScreen, true);
+        settings.SetActive(false);
+        titleScreen.SetActive(true);
     }
 
     /// <summary>
