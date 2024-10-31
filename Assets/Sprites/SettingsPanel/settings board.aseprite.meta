@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 379f9ef38a0c70a3198e6c5f4453d024
+guid: a3fa532d2a131f3d397572544a7b2893
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -71,7 +71,7 @@ ScriptedImporter:
     textureFormatSet: 0
     applyGammaDecoding: 0
   previousAsepriteImporterSettings:
-    fileImportMode: 0
+    fileImportMode: 1
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
@@ -84,7 +84,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   asepriteImporterSettings:
-    fileImportMode: 0
+    fileImportMode: 1
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
@@ -97,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638653194659988780
+  platformSettingsDirtyTick: 638659973337224850
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: volume
+  - name: settings board
     originalName: 
-    pivot: {x: 0.9251701, y: -0.9701492}
+    pivot: {x: 0.5019157, y: -0.10666668}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 147
-      height: 67
-    spriteID: 1560c28f5ce26b713bd8e64e60b1491e
+      width: 261
+      height: 150
+    spriteID: 632f3f5bfdea28d44add600623983181
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -141,64 +141,24 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  spriteSheetImportData:
-  - name: volume_0
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 42
-      width: 12
-      height: 29
-    spriteID: bf655cc06c273de4f884d61338edebaf
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: volume_10
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 4
-      width: 12
-      height: 29
-    spriteID: 83e056bca94609e5a9503de4770358be
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
+  spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1805816668
-    name: volume
+    guid: 1374489643
+    name: settings board
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: volume
+    - name: settings board
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 24
-        y: 65
-        width: 147
-        height: 67
-      spriteId: 1560c28f5ce26b713bd8e64e60b1491e
+        x: 29
+        y: 16
+        width: 261
+        height: 150
+      spriteId: 632f3f5bfdea28d44add600623983181
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -219,7 +179,7 @@ ScriptedImporter:
     ignorePlatformSupport: 0
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     forceMaximumCompressionQuality_BC6H_BC7: 0

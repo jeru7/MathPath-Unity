@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5e0f7b46036ebfe248be21eb68c214ed
+guid: 0246d21849a8d65b78a302df79dc4d83
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -35,7 +35,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 16
+    spritePixelsToUnits: 100
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -97,7 +97,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638658306983239340
+  platformSettingsDirtyTick: 638660069734237370
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -121,18 +121,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: LOGINFORGOT
+  - name: 680 2
     originalName: 
-    pivot: {x: 0.52680224, y: -0.025477707}
+    pivot: {x: 0.52763814, y: -0.11111112}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 541
-      height: 314
-    spriteID: be251183c8c3b74ff95928bc6f7d5265
+      width: 597
+      height: 288
+    spriteID: 8ca10ba45f09b1440b119f631a4fc5c8
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -142,7 +142,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
   spriteSheetImportData:
-  - name: LOGINFORGOT_0
+  - name: LOGINUI_0
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -150,10 +150,10 @@ ScriptedImporter:
     rect:
       serializedVersion: 2
       x: 4
-      y: 203
-      width: 261
-      height: 114
-    spriteID: 0addaca54b50f8712953c2a36bb591d5
+      y: 208
+      width: 84
+      height: 77
+    spriteID: bf4327390af709f09b9e25170cbd6735
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -162,18 +162,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: LOGINFORGOT_1
+  - name: LOGINUI_1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 283
-      y: 278
-      width: 41
-      height: 40
-    spriteID: 86aa2315f57affe37b382256e80a172f
+      x: 107
+      y: 200
+      width: 222
+      height: 92
+    spriteID: 9b8e1a15250f04dd2a3dfbb3ec7a2fed
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -182,18 +182,138 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: LOGINFORGOT_2
+  - name: LOGINUI_3
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 336
-      y: 305
-      width: 123
+      x: 23
+      y: 159
+      width: 222
+      height: 32
+    spriteID: 94e8f771e43d6abcb81933de3076518b
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: LOGINUI_12
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 263
+      y: 158
+      width: 338
+      height: 36
+    spriteID: 8a04c0aebb68302e4917f1d9ef6a4260
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: LOGINUI_14
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 6
+      y: 105
+      width: 12
+      height: 12
+    spriteID: 8cf30d69f7b36188695bb8a48c7bcb92
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: LOGINUI_15
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 26
+      y: 85
+      width: 219
+      height: 32
+    spriteID: 843e58e342ae177099cc5401eeb3b8cd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: LOGINUI_24
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 263
+      y: 87
+      width: 338
+      height: 36
+    spriteID: f387c831280e0eeac9324fe2083bc8cf
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: LOGINUI_26
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 26
+      y: 56
+      width: 338
+      height: 18
+    spriteID: 7925da43c7eb5b2ff995302acb83b562
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: LOGINUI_40
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 24
+      y: 29
+      width: 375
       height: 13
-    spriteID: 24534d63899a2d5fea5ba9483a0009bf
+    spriteID: 9de6c63ca52b1c8f49256a428dc1e3da
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -202,218 +322,18 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: LOGINFORGOT_3
+  - name: LOGINUI_57
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
-      x: 336
-      y: 279
-      width: 123
-      height: 13
-    spriteID: 6b4497c68ceb78c03bb47ed54fdc9062
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: LOGINFORGOT_4
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 286
-      y: 252
-      width: 77
-      height: 11
-    spriteID: 77163f08f5ef3b1b9838c66dd12926eb
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: LOGINFORGOT_12
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 392
-      y: 238
-      width: 68
-      height: 29
-    spriteID: d656681aebe78ced5b0c5a237ebd6440
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: LOGINFORGOT_13
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 287
-      y: 226
-      width: 76
-      height: 11
-    spriteID: f0b797690fad9db069117671ef96cc52
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: LOGINFORGOT_21
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 380
-      y: 223
-      width: 109
-      height: 6
-    spriteID: 530bcc2acb44a30ca83707ab963c87f5
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: LOGINFORGOT_35
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 5
+      x: 25
       y: 4
-      width: 278
-      height: 118
-    spriteID: 78ee54358edf1d5cc87774095161f735
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: LOGINFORGOT_36
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 297
-      y: 86
-      width: 75
-      height: 25
-    spriteID: b2bf23f289d76456ba9921ec241f6756
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: LOGINFORGOT_37
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 399
-      y: 88
-      width: 146
-      height: 29
-    spriteID: 465b52dd5e9b9db84b2b851dcf5b6730
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: LOGINFORGOT_38
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 359
-      y: 61
-      width: 49
-      height: 11
-    spriteID: 36ea803f6773855bbb8f781a22068e71
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: LOGINFORGOT_43
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 332
-      y: 35
-      width: 76
-      height: 11
-    spriteID: 3c19c6dbdbd1d96e2a7dba9a28c4310c
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: LOGINFORGOT_51
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 302
-      y: 9
-      width: 107
-      height: 11
-    spriteID: 2ac0f92145509b1f993930c20e61ca60
+      width: 368
+      height: 13
+    spriteID: 914b218c5cbb05682856714be0c89b12
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -424,21 +344,21 @@ ScriptedImporter:
     uvTransform: {x: 0, y: 0}
   asepriteLayers:
   - layerIndex: 0
-    guid: -1572791324
-    name: LOGINFORGOT
+    guid: -279579494
+    name: 680 2
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: LOGINFORGOT
+    - name: LOGINUI
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 15
-        y: 8
-        width: 541
-        height: 314
-      spriteId: be251183c8c3b74ff95928bc6f7d5265
+        x: 25
+        y: 32
+        width: 597
+        height: 288
+      spriteId: 8ca10ba45f09b1440b119f631a4fc5c8
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -459,7 +379,7 @@ ScriptedImporter:
     ignorePlatformSupport: 0
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 4
+    textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
     forceMaximumCompressionQuality_BC6H_BC7: 0
@@ -505,4 +425,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 600, y: 336}
+  canvasSize: {x: 680, y: 320}
