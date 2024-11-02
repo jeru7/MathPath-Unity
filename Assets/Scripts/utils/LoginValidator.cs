@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,12 +9,16 @@ public class LoginValidator : MonoBehaviour
 {
     public TMP_InputField username, password;
     public GameObject passwordError, usernameError, passwordEmpty, usernameEmpty; 
+    public AudioManager audioManager;
+    public AudioClip clickSound;
 
-    private string loginUrl = "url sa mongodb end point";
+    private string loginUrl = "http://localhost:3000/auth/login";
 
     public void OnLogin()
     {
+        audioManager.PlaySFX(clickSound);
         ResetError();
+        if (!IsValidField()) return;
         StartCoroutine(LoginCoroutine(username.text, password.text));
     }
 
@@ -27,11 +32,15 @@ public class LoginValidator : MonoBehaviour
         {
             yield return request.SendWebRequest();
 
+            Debug.Log(request.result);
+
             if(request.result == UnityWebRequest.Result.Success)
             {
                 Debug.Log("Login successful: " + request.downloadHandler.text);
                 ResetError();
             } else {
+                Debug.LogError("Login failed: " + request.downloadHandler.text);
+                Debug.Log($"Username: {username} and Password: {password}");
                 Debug.LogError("Login failed: " + request.downloadHandler.text);
 
                 if(request.downloadHandler.text.Contains("Invalid username"))
@@ -44,21 +53,23 @@ public class LoginValidator : MonoBehaviour
         }
     }
 
-    public void CheckField()
+    public bool IsValidField()
     {
         if (string.IsNullOrEmpty(username.text) && string.IsNullOrEmpty(password.text))
         {
             usernameEmpty.SetActive(true);
             passwordEmpty.SetActive(true);
+            return false;
         } else if (string.IsNullOrEmpty(username.text))
         {
             usernameEmpty.SetActive(true);
-            return;
+            return false;
         } else if (string.IsNullOrEmpty(password.text))
         {
             passwordEmpty.SetActive(true);
-            return;
+            return false;
         }
+        return true;
     }
 
     public void ResetError() {
