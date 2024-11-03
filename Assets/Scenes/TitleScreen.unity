@@ -1744,7 +1744,6 @@ MonoBehaviour:
   passwordEmpty: {fileID: 821810641}
   usernameEmpty: {fileID: 701539686}
   audioManager: {fileID: 1134900462}
-  clickSound: {fileID: 8300000, guid: 62684f9790acb7ae2be3c4f64790f117, type: 3}
 --- !u!1 &596586919
 GameObject:
   m_ObjectHideFlags: 0
@@ -4163,6 +4162,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSource: {fileID: 1134900461}
   sfxSource: {fileID: 1134900460}
+  clickSoundClip: {fileID: 8300000, guid: 62684f9790acb7ae2be3c4f64790f117, type: 3}
+  backgroundMusicClip: {fileID: 8300000, guid: 4e9060e2a8293e9e8a54e7bf3038ba24, type: 3}
 --- !u!1 &1175656946
 GameObject:
   m_ObjectHideFlags: 0
@@ -6005,8 +6006,6 @@ MonoBehaviour:
   loginForm: {fileID: 564962106}
   forgotPassForm: {fileID: 642056469}
   settings: {fileID: 374461622}
-  backgroundMusic: {fileID: 8300000, guid: 4e9060e2a8293e9e8a54e7bf3038ba24, type: 3}
-  clickSound: {fileID: 8300000, guid: 62684f9790acb7ae2be3c4f64790f117, type: 3}
 --- !u!114 &1426872060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6020,7 +6019,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioManager: {fileID: 1134900462}
-  clickSound: {fileID: 8300000, guid: 62684f9790acb7ae2be3c4f64790f117, type: 3}
   barAnimation: {fileID: 374461626}
 --- !u!1 &1455811114
 GameObject:

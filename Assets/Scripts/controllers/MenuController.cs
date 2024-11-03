@@ -10,16 +10,13 @@ public class MenuController : MonoBehaviour
     public GameObject forgotPassForm;
     public GameObject settings;
 
-    public AudioClip backgroundMusic;
-    public AudioClip clickSound;
-
     /// <summary>
     /// On awake method. Runs every time the title screen starts.
     /// </summary>
     private void Awake()
     {
         InitializeMenu();
-        audioManager.PlayMusic(backgroundMusic);
+        audioManager.PlayMusic();
     }
 
     /// <summary>
@@ -38,7 +35,7 @@ public class MenuController : MonoBehaviour
     /// </summary>
     public void StartGame()
     {
-        audioManager.PlaySFX(clickSound);
+        audioManager.PlayClickSound();
         login.SetActive(true);
         loginForm.SetActive(true);
         titleScreen.SetActive(false);
@@ -46,21 +43,21 @@ public class MenuController : MonoBehaviour
 
     public void CloseLoginForm()
     {
-        audioManager.PlaySFX(clickSound);
+        audioManager.PlayClickSound();
         login.SetActive(false);
         titleScreen.SetActive(true);
     }
 
     public void OpenForgotPassForm()
     {
-        audioManager.PlaySFX(clickSound);
+        audioManager.PlayClickSound();
         loginForm.SetActive(false);
         forgotPassForm.SetActive(true);
     }
 
     public void CloseForgotPassForm()
     {
-        audioManager.PlaySFX(clickSound);
+        audioManager.PlayClickSound();
         forgotPassForm.SetActive(false);
         loginForm.SetActive(true);
     }
@@ -71,7 +68,7 @@ public class MenuController : MonoBehaviour
     /// </summary>
     public void OpenSettings()
     {
-        audioManager.PlaySFX(clickSound);
+        audioManager.PlayClickSound();
         settings.SetActive(true);
         titleScreen.SetActive(false);
     }
@@ -83,7 +80,7 @@ public class MenuController : MonoBehaviour
     /// </summary>
     public void CloseSettings()
     {
-        audioManager.PlaySFX(clickSound);
+        audioManager.PlayClickSound();
         settings.SetActive(false);
         titleScreen.SetActive(true);
     }
@@ -93,7 +90,7 @@ public class MenuController : MonoBehaviour
     /// </summary>
     public void Exit()
     {
-        audioManager.PlaySFX(clickSound);
+        audioManager.PlayClickSound();
         Application.Quit();
     }
 } 

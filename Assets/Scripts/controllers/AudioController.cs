@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class AudioController : MonoBehaviour
 {
     public AudioManager audioManager;
-    public AudioClip clickSound;
     public BarAnimation barAnimation;
 
     // 0.2f is 20%
@@ -20,7 +19,7 @@ public class AudioController : MonoBehaviour
     {
         audioManager.musicSource.volume = Mathf.Clamp(audioManager.musicSource.volume + volumeChangeAmount, 0f, 1f);
         barAnimation.UpdateMusicVolumeBars(audioManager.musicSource.volume, volumeChangeAmount);
-        audioManager.PlaySFX(clickSound);
+        audioManager.PlayClickSound();
     }
 
     /// <summary>
@@ -30,7 +29,7 @@ public class AudioController : MonoBehaviour
     {
         audioManager.musicSource.volume = Mathf.Clamp(audioManager.musicSource.volume - volumeChangeAmount, 0f, 1f);
         barAnimation.UpdateMusicVolumeBars(audioManager.musicSource.volume, volumeChangeAmount);
-        audioManager.PlaySFX(clickSound);
+        audioManager.PlayClickSound();
     }
 
     /// <summary>
@@ -40,7 +39,7 @@ public class AudioController : MonoBehaviour
     {
         audioManager.sfxSource.volume = Mathf.Clamp(audioManager.sfxSource.volume + volumeChangeAmount, 0f, 1f);
         barAnimation.UpdateSFXVolumeBars(audioManager.sfxSource.volume, volumeChangeAmount);
-        audioManager.PlaySFX(clickSound);
+        audioManager.PlayClickSound();
     }
 
     /// <summary>
@@ -50,7 +49,7 @@ public class AudioController : MonoBehaviour
     {
         audioManager.sfxSource.volume = Mathf.Clamp(audioManager.sfxSource.volume - volumeChangeAmount, 0f, 1f);
         barAnimation.UpdateSFXVolumeBars(audioManager.sfxSource.volume, volumeChangeAmount);
-        audioManager.PlaySFX(clickSound);
+        audioManager.PlayClickSound();
     }
 
     /// <summary>

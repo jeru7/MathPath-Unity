@@ -10,13 +10,12 @@ public class LoginValidator : MonoBehaviour
     public TMP_InputField username, password;
     public GameObject passwordError, usernameError, passwordEmpty, usernameEmpty; 
     public AudioManager audioManager;
-    public AudioClip clickSound;
 
     private string loginUrl = "http://localhost:3000/auth/login";
 
     public void OnLogin()
     {
-        audioManager.PlaySFX(clickSound);
+        audioManager.PlayClickSound();
         ResetError();
         if (!IsValidField()) return;
         StartCoroutine(LoginCoroutine(username.text, password.text));
@@ -39,8 +38,6 @@ public class LoginValidator : MonoBehaviour
                 Debug.Log("Login successful: " + request.downloadHandler.text);
                 ResetError();
             } else {
-                Debug.LogError("Login failed: " + request.downloadHandler.text);
-                Debug.Log($"Username: {username} and Password: {password}");
                 Debug.LogError("Login failed: " + request.downloadHandler.text);
 
                 if(request.downloadHandler.text.Contains("Invalid username"))
