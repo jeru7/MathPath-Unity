@@ -11,8 +11,12 @@ public class LoginValidator : MonoBehaviour
     public GameObject passwordError, usernameError, passwordEmpty, usernameEmpty; 
     public AudioManager audioManager;
 
+    // api end point
     private string loginUrl = "http://localhost:3000/auth/login";
 
+    /// <summary>
+    /// runs immediately when the login button is clicked
+    /// </summary>
     public void OnLogin()
     {
         audioManager.PlayClickSound();
@@ -21,6 +25,13 @@ public class LoginValidator : MonoBehaviour
         StartCoroutine(LoginCoroutine(username.text, password.text));
     }
 
+    /// <summary>
+    /// required enumerator for the couroutine
+    /// responsible for the async process to check the credentials of the username and password
+    /// </summary>
+    /// <param name="username">the username value on the username field</param>
+    /// <param name="password">the password value on the password field</param>
+    /// <returns></returns>
     private IEnumerator LoginCoroutine(string username, string password)
     {
         WWWForm form = new WWWForm();
@@ -50,6 +61,10 @@ public class LoginValidator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// check whether the input fields are empty
+    /// </summary>
+    /// <returns></returns>
     public bool IsValidField()
     {
         if (string.IsNullOrEmpty(username.text) && string.IsNullOrEmpty(password.text))
@@ -69,6 +84,9 @@ public class LoginValidator : MonoBehaviour
         return true;
     }
 
+    /// <summary>
+    /// a function that simply resets the error ui indicator to false - defaults to inactive 
+    /// </summary>
     public void ResetError() {
         passwordError.SetActive(false);
         usernameError.SetActive(false);

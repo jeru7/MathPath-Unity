@@ -11,7 +11,6 @@ public class AudioManager : MonoBehaviour
     /// <summary>
     /// Plays the background music. 
     /// </summary>
-    /// <param name="clip">References to the audio clip (music/sound source)</param>
     public void PlayMusic()
     {
         musicSource.clip = backgroundMusicClip;
@@ -22,7 +21,6 @@ public class AudioManager : MonoBehaviour
     /// <summary>
     /// Plays sfx.
     /// </summary>
-    /// <param name="clip">References to the audio clip (music/sound source)</param>
     public void PlayClickSound()
     {
         sfxSource.PlayOneShot(clickSoundClip);
