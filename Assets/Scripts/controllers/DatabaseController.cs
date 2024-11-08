@@ -6,10 +6,12 @@ using UnityEngine.Networking;
 using System.Linq;
 using Unity.VisualScripting;
 
+// TODO: test and finalize the code
 public class DatabaseController : MonoBehaviour
 {
     private SQLiteConnection _connection;
-    private string apiUrl = "backend endpoint";
+    // TODO: setup the api on the server
+    private string apiUrl = "http://localhost:3001/api/students";
     void Start()
     {
         string dbPath = Application.dataPath + "/GameData.db";
@@ -60,7 +62,6 @@ public class DatabaseController : MonoBehaviour
 
     #region Sync database methods
 
-    // TODO: methods for syncing the database
     public void SyncDatabase(string studentId)
     {
         StartCoroutine(SyncServerCoroutine(studentId));
@@ -93,6 +94,12 @@ public class DatabaseController : MonoBehaviour
                     hasChanges = true;
                 }
 
+                if(studentMongo.level < localHistory.level)
+                {
+                    studentMongo.level = localHistory.level;
+                    hasChanges = true;
+                }
+
                 List<string> localGameLevelIds = localHistory.gameLevelIds.Split(',').ToList();
                 if(!localGameLevelIds.SequenceEqual(studentMongo.gameLevelIds))
                 {
@@ -111,6 +118,7 @@ public class DatabaseController : MonoBehaviour
                 {
                     var updatePayload = new 
                     {
+                        level = studentMongo.level,
                         settings = studentMongo.settings,
                         gameLevelIds = studentMongo.gameLevelIds,
                         bagItems = studentMongo.bag,
@@ -145,6 +153,7 @@ public class DatabaseController : MonoBehaviour
     public class Student 
     {
         public string id;
+        public int level;
         public Settings settings;
         public List<string> gameLevelIds;
         public List<string> bag;
