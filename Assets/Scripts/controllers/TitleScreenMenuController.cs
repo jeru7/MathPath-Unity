@@ -3,7 +3,6 @@ using UnityEngine;
 public class MenuController : MonoBehaviour 
 {
     public AudioManager audioManager;
-
     public GameObject titleScreen;
     public GameObject login;
     public GameObject loginForm;

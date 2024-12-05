@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class AudioController : MonoBehaviour
 {
@@ -11,6 +8,18 @@ public class AudioController : MonoBehaviour
     // 0.2f is 20%
     public const float volumeChangeAmount = 0.2f;
 
+    public void Start()
+    {
+        Player player = GameManager.Instance?.Player;
+        if (player != null && player.GetSettings() != null)
+        {
+            audioManager.InitializeVolume(player.GetSettings().GetMusic(), player.GetSettings().GetSfx());
+        }
+
+        barAnimation.UpdateMusicVolumeBars(audioManager.musicSource.volume, volumeChangeAmount);
+        barAnimation.UpdateSFXVolumeBars(audioManager.sfxSource.volume, volumeChangeAmount);
+    }
+
 
     /// <summary>
     /// Increases music volume.
@@ -18,6 +27,7 @@ public class AudioController : MonoBehaviour
     public void IncreaseMusicVolume()
     {
         audioManager.musicSource.volume = Mathf.Clamp(audioManager.musicSource.volume + volumeChangeAmount, 0f, 1f);
+        UpdateMusicVolume(audioManager.musicSource.volume);
         barAnimation.UpdateMusicVolumeBars(audioManager.musicSource.volume, volumeChangeAmount);
         audioManager.PlayClickSound();
     }
@@ -28,6 +38,7 @@ public class AudioController : MonoBehaviour
     public void DecreaseMusicVolume()
     {
         audioManager.musicSource.volume = Mathf.Clamp(audioManager.musicSource.volume - volumeChangeAmount, 0f, 1f);
+        UpdateMusicVolume(audioManager.musicSource.volume);
         barAnimation.UpdateMusicVolumeBars(audioManager.musicSource.volume, volumeChangeAmount);
         audioManager.PlayClickSound();
     }
@@ -38,6 +49,7 @@ public class AudioController : MonoBehaviour
     public void IncreaseSFXVolume()
     {
         audioManager.sfxSource.volume = Mathf.Clamp(audioManager.sfxSource.volume + volumeChangeAmount, 0f, 1f);
+        UpdateSfxVolume(audioManager.sfxSource.volume);
         barAnimation.UpdateSFXVolumeBars(audioManager.sfxSource.volume, volumeChangeAmount);
         audioManager.PlayClickSound();
     }
@@ -48,16 +60,26 @@ public class AudioController : MonoBehaviour
     public void DecreaseSFXVolume()
     {
         audioManager.sfxSource.volume = Mathf.Clamp(audioManager.sfxSource.volume - volumeChangeAmount, 0f, 1f);
+        UpdateSfxVolume(audioManager.sfxSource.volume);
         barAnimation.UpdateSFXVolumeBars(audioManager.sfxSource.volume, volumeChangeAmount);
         audioManager.PlayClickSound();
     }
 
-    /// <summary>
-    /// Initializes the volume bar sprites based on the current sfx and music volume. 
-    /// </summary>
-    private void Start()
+    private void UpdateMusicVolume(float newVolume)
     {
-        barAnimation.UpdateMusicVolumeBars(audioManager.musicSource.volume, volumeChangeAmount);
-        barAnimation.UpdateSFXVolumeBars(audioManager.sfxSource.volume, volumeChangeAmount);
+        Player player = GameManager.Instance?.Player;
+        if (player != null && player.GetSettings() != null)
+        {
+            player.GetSettings().SetMusic(newVolume);
+        }
+    }
+
+    private void UpdateSfxVolume(float newVolume)
+    {
+        Player player = GameManager.Instance?.Player;
+        if (player != null && player.GetSettings() != null)
+        {
+            player.GetSettings().SetSfx(newVolume);
+        }
     }
 }

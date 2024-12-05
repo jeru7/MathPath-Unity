@@ -4,14 +4,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Networking;
 using System.Linq;
-using Unity.VisualScripting;
 
 // TODO: test and finalize the code
 public class DatabaseController : MonoBehaviour
 {
     private SQLiteConnection _connection;
-    // TODO: setup the api on the server
-    private string apiUrl = "http://localhost:3001/api/students";
+    private string url = "http://localhost:3001/student";
     void Start()
     {
         string dbPath = Application.dataPath + "/GameData.db";
@@ -19,15 +17,29 @@ public class DatabaseController : MonoBehaviour
 
         _connection = new SQLiteConnection(dbPath, SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.Create);
 
-        _connection.CreateTable<Settings>();
-        _connection.CreateTable<History>();
+        // creates a sql table for settings and history
+        if (!_connection.Table<Settings>().Any())
+        {
+            _connection.CreateTable<Settings>();
+        }
+        if (!_connection.Table<History>().Any())
+        {
+            _connection.CreateTable<History>();
+        }
+
     }
 
     #region Settings methods
-    // TODO: user settings methods
+
     public void SaveSettings(float currentSfx, float currentMusic)
     {
-        _connection.InsertOrReplace(new Settings {sfx = currentSfx, music = currentMusic });
+        var settings = new Settings
+        {
+            sfx = currentSfx,
+            music = currentMusic,
+        };
+
+        _connection.InsertOrReplace(settings);
     }
 
     public Settings LoadSettings()
@@ -38,24 +50,26 @@ public class DatabaseController : MonoBehaviour
     #endregion Settings methods
 
     #region History methods
-    // TODO: user history methods
-    public void SaveHistory(int level, float sfx, float music, List<string> gameLevelIds, List<string> bagItems)
+
+    public void SaveHistory(int level, int coins, float sfx, float music, List<string> gameLevelIds, List<string> bagItems)
     {
         var history = new History
         {
             level = level,
-            settingsSfx = sfx,
-            settingsMusic = music,
+            coins = coins,
+            sfx = sfx,
+            music = music,
             gameLevelIds = string.Join(',', gameLevelIds),
             bag = string.Join(",", bagItems),
-            createdAt = System.DateTime.Now,
+            timestamp = System.DateTime.Now,
         };
-        _connection.Insert(history);
+
+        _connection.InsertOrReplace(history);
     }
 
-    public List<History> LoadHistory()
+    public History LoadHistory()
     {
-        return _connection.Table<History>().ToList();
+        return _connection.Table<History>().FirstOrDefault();
     }
 
     #endregion History methods
@@ -69,114 +83,80 @@ public class DatabaseController : MonoBehaviour
 
     private IEnumerator SyncServerCoroutine(string studentId)
     {
-        UnityWebRequest req = UnityWebRequest.Get(apiUrl + "/" + studentId);
+        UnityWebRequest req = UnityWebRequest.Get(url + "/" + studentId);
         yield return req.SendWebRequest();
 
-        if(req.result == UnityWebRequest.Result.Success)
+        if (req.result == UnityWebRequest.Result.Success)
         {
-            Student studentMongo = JsonUtility.FromJson<Student>(req.downloadHandler.text);
+            Player studentMongo = JsonUtility.FromJson<Player>(req.downloadHandler.text);
+            History localHistory = LoadHistory();
 
-            List<History> localHistories = _connection.Table<History>().OrderBy(h => h.createdAt).ToList();
+            bool hasChanges = false;
 
-            foreach (var localHistory in localHistories)
+            var updatedSettings = new
             {
-                bool hasChanges = false;
-                var updatedSettings = new
+                sfx = localHistory.sfx,
+                music = localHistory.music,
+            };
+
+            if (studentMongo.settings.sfx != updatedSettings.sfx || studentMongo.settings.music != updatedSettings.music)
+            {
+                studentMongo.settings.sfx = updatedSettings.sfx;
+                studentMongo.settings.music = updatedSettings.music;
+                hasChanges = true;
+            }
+
+            if (studentMongo.level < localHistory.level)
+            {
+                studentMongo.level = localHistory.level;
+                hasChanges = true;
+            }
+
+            List<string> localGameLevelIds = localHistory.gameLevelIds.Split(',').ToList();
+            if (!localGameLevelIds.SequenceEqual(studentMongo.gameLevelIds))
+            {
+                studentMongo.gameLevelIds = localGameLevelIds;
+                hasChanges = true;
+            }
+
+            List<string> localBagItems = localHistory.bag.Split(',').ToList();
+            if (!localBagItems.SequenceEqual(studentMongo.bagItems))
+            {
+                studentMongo.bagItems = localBagItems;
+                hasChanges = true;
+            }
+
+            if (hasChanges)
+            {
+                var updatePayload = new
                 {
-                    sfx = localHistory.settingsSfx,
-                    music = localHistory.settingsMusic,
+                    level = studentMongo.level,
+                    settings = studentMongo.settings,
+                    gameLevelIds = studentMongo.gameLevelIds,
+                    bagItems = studentMongo.bagItems,
                 };
 
-                if(studentMongo.settings.sfx != updatedSettings.sfx || studentMongo.settings.music != updatedSettings.music)
+                UnityWebRequest updateRequest = UnityWebRequest.Put(url + "/" + studentId, JsonUtility.ToJson(updatePayload));
+                updateRequest.SetRequestHeader("Content-Type", "application/json");
+                yield return updateRequest.SendWebRequest();
+
+                if (updateRequest.result == UnityWebRequest.Result.Success)
                 {
-                    studentMongo.settings.sfx = updatedSettings.sfx;
-                    studentMongo.settings.music = updatedSettings.music;
-                    hasChanges = true;
+                    Debug.Log("Sync success");
                 }
-
-                if(studentMongo.level < localHistory.level)
+                else
                 {
-                    studentMongo.level = localHistory.level;
-                    hasChanges = true;
-                }
-
-                List<string> localGameLevelIds = localHistory.gameLevelIds.Split(',').ToList();
-                if(!localGameLevelIds.SequenceEqual(studentMongo.gameLevelIds))
-                {
-                    studentMongo.gameLevelIds = localGameLevelIds;
-                    hasChanges = true;
-                }
-
-                List<string> localBagItems = localHistory.bag.Split(',').ToList();
-                if(!localBagItems.SequenceEqual(studentMongo.bag)) 
-                {
-                    studentMongo.bag = localBagItems;
-                    hasChanges = true;
-                }
-
-                if (hasChanges)
-                {
-                    var updatePayload = new 
-                    {
-                        level = studentMongo.level,
-                        settings = studentMongo.settings,
-                        gameLevelIds = studentMongo.gameLevelIds,
-                        bagItems = studentMongo.bag,
-                    };
-
-                    UnityWebRequest updateRequest = UnityWebRequest.Put(apiUrl + "/" + studentId, JsonUtility.ToJson(updatePayload));
-                    updateRequest.SetRequestHeader("Content-Type", "application/json");
-                    yield return updateRequest.SendWebRequest();
-
-                    if(updateRequest.result == UnityWebRequest.Result.Success)
-                    {
-                        Debug.Log("Sync success");
-                    }
-                    else 
-                    {
-                        Debug.LogError("Sync failed");
-                    }
+                    Debug.LogError("Sync failed");
                 }
             }
 
             _connection.DeleteAll<History>();
             Debug.Log("Local history deleted");
         }
-        else 
+        else
         {
             Debug.LogError("Failed to fetch student data");
         }
     }
     #endregion Sync database methods
-
-    #region classes for representations
-    public class Student 
-    {
-        public string id;
-        public int level;
-        public Settings settings;
-        public List<string> gameLevelIds;
-        public List<string> bag;
-
-    }
-    public class Settings 
-    {
-        [PrimaryKey, AutoIncrement]
-        public int id {get; set;}
-        public float sfx {get; set;}
-        public float music {get; set;}
-    }
-
-    public class History
-    {
-        [PrimaryKey, AutoIncrement]
-        public int id {get; set;}
-        public int level {get; set;}
-        public float settingsSfx {get; set;}
-        public float settingsMusic {get; set;}
-        public string gameLevelIds {get; set;}
-        public string bag {get; set;}
-        public System.DateTime createdAt {get; set;}
-    }
-    #endregion classes for representations
 }
