@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -9,7 +8,11 @@ public class LoginValidator : MonoBehaviour
 {
     public TMP_InputField username, password;
     public GameObject passwordError, usernameError, passwordEmpty, usernameEmpty;
+    private Player player;
+    private Settings settings;
     public AudioManager audioManager;
+    private SceneController sceneController;
+    private DatabaseController dbController;
     // api end point
     private string loginUrl = "http://localhost:3001/game/auth/login";
 
@@ -35,30 +38,26 @@ public class LoginValidator : MonoBehaviour
     /// <returns></returns>
     private IEnumerator LoginCoroutine(string username, string password)
     {
+        dbController = DatabaseController.Instance;
+        player = Player.Instance;
+        settings = Settings.Instance;
+
         WWWForm form = new WWWForm();
         form.AddField("username", username);
         form.AddField("password", password);
 
         using (UnityWebRequest request = UnityWebRequest.Post(loginUrl, form))
         {
+
             yield return request.SendWebRequest();
 
             if (request.result == UnityWebRequest.Result.Success)
             {
+                Debug.Log("Server Response: " + request.downloadHandler.text);
 
                 var response = JsonUtility.FromJson<LoginSuccessResponse>(request.downloadHandler.text);
 
-                GameManager.Instance.InitializePlayerData(
-                    response.id,
-                    response.username,
-                    int.Parse(response.level),
-                    response.character,
-                    response.coins,
-                    JsonUtility.FromJson<Settings>(response.settings),
-                    JsonUtility.FromJson<History>(response.history),
-                    response.gameLevelIds,
-                    response.bagItems
-                );
+                InitializePlayer(response);
 
                 SyncWithDatabase();
 
@@ -66,7 +65,8 @@ public class LoginValidator : MonoBehaviour
 
                 if (response.character == "")
                 {
-                    SceneManager.LoadScene("CharacterSelection");
+                    sceneController = SceneController.Instance;
+                    sceneController.GoToTitleScreen();
                 }
                 else
                 {
@@ -89,19 +89,40 @@ public class LoginValidator : MonoBehaviour
         }
     }
 
+    private void InitializePlayer(LoginSuccessResponse response)
+    {
+        if (player == null)
+        {
+            Debug.Log("Player instance is null");
+            return;
+        }
+
+        player.SetId(response.id);
+        player.SetUsername(response.username);
+        player.SetLevel(response.level);
+        player.SetCharacter(response.character);
+        player.SetCoins(response.coins);
+        player.SetSettings(response.settings);
+        player.SetHistory(response.history);
+        player.SetGameLevelIds(response.gameLevelIds);
+        player.SetBagItems(response.bagItems);
+    }
+
     private void SyncWithDatabase()
     {
-        DatabaseController dbController = FindObjectOfType<DatabaseController>();
-        if (dbController != null)
-        {
-            var player = GameManager.Instance.Player;
-            var playerSettings = player.GetSettings();
 
-            // syncing history 
-            dbController.SaveSettings(playerSettings.GetSfx(), playerSettings.GetMusic());
-            // sycn history
-            dbController.SaveHistory(player.GetLevel(), player.GetCoins(), playerSettings.GetSfx(), playerSettings.GetMusic(), player.GetGameLevelIds(), player.GetBagItems());
+        if (dbController == null)
+        {
+            Debug.Log("dbController instance is null");
+            return;
         }
+
+        // TODO: update this once the ui for dialog for new settings is done
+
+        // syncing history 
+        dbController.SaveSettings(player.GetSettings().sfx, player.GetSettings().music);
+        // sycn history
+        dbController.SaveHistory(player.GetLevel(), player.GetCoins(), player.GetSettings().sfx, player.GetSettings().music, player.GetGameLevelIds(), player.GetBagItems());
     }
 
     /// <summary>
@@ -145,11 +166,11 @@ public class LoginValidator : MonoBehaviour
     {
         public string id;
         public string username;
-        public string level;
+        public int level;
         public string character;
         public int coins;
-        public string settings;
-        public string history;
+        public SettingsData settings;
+        public HistoryData history;
         public List<string> gameLevelIds;
         public List<string> bagItems;
     }
