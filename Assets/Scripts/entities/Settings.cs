@@ -1,28 +1,54 @@
-using UnityEngine;
 using SQLite4Unity3d;
-using Unity.VisualScripting;
+using UnityEngine;
 
-public class Settings
+public class Settings : MonoBehaviour
 {
+    public static Settings Instance;
+    private AudioManager audioManager;
+
     [PrimaryKey, AutoIncrement]
-    public string id { get; set; }
-    public float sfx = 1.0f;
-    public float music = 1.0f;
+    public int id { get; set; }
+    public float sfx { get; set; }
+    public float music { get; set; }
 
-    public Settings() { }
-
-    public Settings(float sfx, float music)
+    public Settings()
     {
-        this.sfx = sfx;
-        this.music = music;
+        sfx = 1.0f;
+        music = 1.0f;
     }
 
-    public string GetId() => id;
-    public void SetId(string id) => this.id = id;
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void Start()
+    {
+        audioManager = AudioManager.Instance;
+    }
+
+    public int GetId() => id;
+    public void SetId(int id) => this.id = id;
 
     public float GetSfx() => sfx;
-    public void SetSfx(float sfx) => this.sfx = sfx;
+    public void SetSfx(float sfx)
+    {
+        this.sfx = sfx;
+        audioManager.sfxSource.volume = sfx;
+    }
 
     public float GetMusic() => music;
-    public void SetMusic(float music) => this.music = music;
+    public void SetMusic(float music)
+    {
+        this.music = music;
+        audioManager.musicSource.volume = music;
+    }
 }
