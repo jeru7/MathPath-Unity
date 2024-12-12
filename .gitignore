@@ -72,6 +72,7 @@ sysinfo.txt
 *.app
 
 *.db
+*.db.meta
 
 # Crashlytics generated file
 crashlytics-build.properties
