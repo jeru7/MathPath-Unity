@@ -2,22 +2,35 @@ using UnityEngine;
 
 public class AudioController : MonoBehaviour
 {
-    public AudioManager audioManager;
+    private AudioManager audioManager;
     public BarAnimation barAnimation;
+    private Player player;
+    private Settings settings;
 
     // 0.2f is 20%
     public const float volumeChangeAmount = 0.2f;
 
-    public void Start()
+    void Awake()
     {
-        Player player = GameManager.Instance?.Player;
+        player = Player.Instance;
+        settings = Settings.Instance;
+        audioManager = AudioManager.Instance;
+
+        barAnimation.UpdateMusicVolumeBars(audioManager.musicSource.volume, volumeChangeAmount);
+        barAnimation.UpdateSFXVolumeBars(audioManager.sfxSource.volume, volumeChangeAmount);
+    }
+
+    public void SyncAudioSettings()
+    {
         if (player != null && player.GetSettings() != null)
         {
-            audioManager.InitializeVolume(player.GetSettings().GetMusic(), player.GetSettings().GetSfx());
+            audioManager.SyncVolume(player.GetSettings().music, player.GetSettings().sfx);
         }
 
         barAnimation.UpdateMusicVolumeBars(audioManager.musicSource.volume, volumeChangeAmount);
         barAnimation.UpdateSFXVolumeBars(audioManager.sfxSource.volume, volumeChangeAmount);
+
+        audioManager.PlayMusic();
     }
 
 
@@ -67,19 +80,29 @@ public class AudioController : MonoBehaviour
 
     private void UpdateMusicVolume(float newVolume)
     {
-        Player player = GameManager.Instance?.Player;
         if (player != null && player.GetSettings() != null)
         {
-            player.GetSettings().SetMusic(newVolume);
+            player.GetSettings().music = newVolume;
         }
+
+        if (settings != null)
+        {
+            settings.SetMusic(newVolume);
+        }
+
+
     }
 
     private void UpdateSfxVolume(float newVolume)
     {
-        Player player = GameManager.Instance?.Player;
         if (player != null && player.GetSettings() != null)
         {
-            player.GetSettings().SetSfx(newVolume);
+            player.GetSettings().sfx = newVolume;
+        }
+
+        if (settings != null)
+        {
+            settings.SetSfx(newVolume);
         }
     }
 }

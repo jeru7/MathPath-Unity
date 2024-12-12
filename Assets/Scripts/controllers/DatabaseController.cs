@@ -8,24 +8,38 @@ using System.Linq;
 // TODO: test and finalize the code
 public class DatabaseController : MonoBehaviour
 {
+    public static DatabaseController Instance;
+    private Settings settings;
     private SQLiteConnection _connection;
     private string url = "http://localhost:3001/student";
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Start()
     {
+        // TODO: change to Application.persistentPath before build
         string dbPath = Application.dataPath + "/GameData.db";
         Debug.Log("Database path" + dbPath);
 
-        _connection = new SQLiteConnection(dbPath, SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.Create);
+        _connection = new SQLiteConnection(dbPath, SQLiteOpenFlags.Create | SQLiteOpenFlags.ReadWrite);
 
         // creates a sql table for settings and history
-        if (!_connection.Table<Settings>().Any())
-        {
-            _connection.CreateTable<Settings>();
-        }
-        if (!_connection.Table<History>().Any())
-        {
-            _connection.CreateTable<History>();
-        }
+        _connection.CreateTable<Settings>();
+        Debug.Log("Settings table created");
+
+        _connection.CreateTable<History>();
+        Debug.Log("History table created");
 
     }
 
@@ -33,11 +47,10 @@ public class DatabaseController : MonoBehaviour
 
     public void SaveSettings(float currentSfx, float currentMusic)
     {
-        var settings = new Settings
-        {
-            sfx = currentSfx,
-            music = currentMusic,
-        };
+        settings = Settings.Instance;
+
+        settings.SetSfx(currentSfx);
+        settings.SetMusic(currentMusic);
 
         _connection.InsertOrReplace(settings);
     }
@@ -53,16 +66,14 @@ public class DatabaseController : MonoBehaviour
 
     public void SaveHistory(int level, int coins, float sfx, float music, List<string> gameLevelIds, List<string> bagItems)
     {
-        var history = new History
-        {
-            level = level,
-            coins = coins,
-            sfx = sfx,
-            music = music,
-            gameLevelIds = string.Join(',', gameLevelIds),
-            bag = string.Join(",", bagItems),
-            timestamp = System.DateTime.Now,
-        };
+        var history = History.Instance;
+
+        history.SetLevel(level);
+        history.SetCoins(coins);
+        history.SetSfx(sfx);
+        history.SetMusic(music);
+        history.SetBagItems(bagItems);
+        history.SetGameLevelIds(gameLevelIds);
 
         _connection.InsertOrReplace(history);
     }
@@ -112,14 +123,14 @@ public class DatabaseController : MonoBehaviour
                 hasChanges = true;
             }
 
-            List<string> localGameLevelIds = localHistory.gameLevelIds.Split(',').ToList();
+            List<string> localGameLevelIds = localHistory.GetGameLevelIds();
             if (!localGameLevelIds.SequenceEqual(studentMongo.gameLevelIds))
             {
                 studentMongo.gameLevelIds = localGameLevelIds;
                 hasChanges = true;
             }
 
-            List<string> localBagItems = localHistory.bag.Split(',').ToList();
+            List<string> localBagItems = localHistory.GetBagItems();
             if (!localBagItems.SequenceEqual(studentMongo.bagItems))
             {
                 studentMongo.bagItems = localBagItems;
@@ -131,6 +142,7 @@ public class DatabaseController : MonoBehaviour
                 var updatePayload = new
                 {
                     level = studentMongo.level,
+                    coins = studentMongo.coins,
                     settings = studentMongo.settings,
                     gameLevelIds = studentMongo.gameLevelIds,
                     bagItems = studentMongo.bagItems,

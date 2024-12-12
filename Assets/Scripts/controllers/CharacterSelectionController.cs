@@ -15,6 +15,8 @@ public class CharacterSelectionController : MonoBehaviour
 
     private void Awake()
     {
+        audioManager = AudioManager.Instance;
+
         InitializeMenu();
         audioManager.PlayMusic();
     }
