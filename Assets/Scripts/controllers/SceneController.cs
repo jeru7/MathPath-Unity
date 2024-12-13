@@ -23,8 +23,8 @@ public class SceneController : MonoBehaviour
         SceneManager.LoadScene("CharacterSelection");
     }
 
-    public void GoToMainHub()
+    public void GoToGameMainHub()
     {
-        SceneManager.LoadScene("MainHub");
+        SceneManager.LoadScene("GameMainHub");
     }
 }

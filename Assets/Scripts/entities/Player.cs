@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 
     public string id { get; set; }
     public string username { get; set; }
+    public string characterName { get; set; }
     public int level { get; set; }
     public string character { get; set; }
     public int coins { get; set; }
@@ -35,6 +36,9 @@ public class Player : MonoBehaviour
 
     public string GetUsername() => username;
     public void SetUsername(string username) => this.username = username;
+
+    public string GetCharacterName() => characterName;
+    public void SetCharacterName(string characterName) => this.characterName = characterName;
 
     public int GetLevel() => level;
     public void SetLevel(int level) => this.level = level;

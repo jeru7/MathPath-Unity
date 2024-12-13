@@ -41,6 +41,7 @@ public class LoginValidator : MonoBehaviour
         dbController = DatabaseController.Instance;
         player = Player.Instance;
         settings = Settings.Instance;
+        sceneController = SceneController.Instance;
 
         WWWForm form = new WWWForm();
         form.AddField("username", username);
@@ -65,12 +66,11 @@ public class LoginValidator : MonoBehaviour
 
                 if (response.character == "")
                 {
-                    sceneController = SceneController.Instance;
                     sceneController.GoToTitleScreen();
                 }
                 else
                 {
-                    // game hub
+                    sceneController.GoToGameMainHub();
                 }
             }
             else
@@ -99,6 +99,7 @@ public class LoginValidator : MonoBehaviour
 
         player.SetId(response.id);
         player.SetUsername(response.username);
+        player.SetCharacterName(response.characterName);
         player.SetLevel(response.level);
         player.SetCharacter(response.character);
         player.SetCoins(response.coins);
@@ -166,6 +167,7 @@ public class LoginValidator : MonoBehaviour
     {
         public string id;
         public string username;
+        public string characterName;
         public int level;
         public string character;
         public int coins;
