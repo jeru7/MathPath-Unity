@@ -564,7 +564,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 552940036}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 678339701}
+        m_TargetAssemblyTypeName: CharacterSelectionController, Assembly-CSharp
+        m_MethodName: OnCreateClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &552940036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -854,12 +866,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 791aed37dddcce8889bc7f8a42889db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioManager: {fileID: 0}
   selectTitle: {fileID: 1655128746}
   nameTitle: {fileID: 1337920146}
   maleCardContainer: {fileID: 671050859}
   femaleCardContainer: {fileID: 1917397063}
   promptNameContainer: {fileID: 420353731}
+  characterNameInput: {fileID: 692264523}
 --- !u!1 &692264521
 GameObject:
   m_ObjectHideFlags: 0
@@ -956,8 +968,8 @@ MonoBehaviour:
   m_HideSoftKeyboard: 0
   m_CharacterValidation: 0
   m_RegexValue: 
-  m_GlobalPointSize: 14
-  m_CharacterLimit: 0
+  m_GlobalPointSize: 32
+  m_CharacterLimit: 16
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls: []
@@ -990,7 +1002,7 @@ MonoBehaviour:
   m_CaretWidth: 1
   m_ReadOnly: 0
   m_RichText: 1
-  m_GlobalFontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_GlobalFontAsset: {fileID: 11400000, guid: 9a567b209d8c6302fa5c06f03d15af91, type: 2}
   m_OnFocusSelectAll: 1
   m_ResetOnDeActivation: 1
   m_RestoreOriginalTextOnEscape: 1
@@ -1316,8 +1328,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u200B"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9a567b209d8c6302fa5c06f03d15af91, type: 2}
+  m_sharedMaterial: {fileID: 7040922357104373037, guid: 9a567b209d8c6302fa5c06f03d15af91, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1341,8 +1353,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0
-  m_fontSizeBase: 0
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1718,8 +1730,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.5}
-  m_SizeDelta: {x: -20, y: -13}
+  m_AnchoredPosition: {x: 0.53930664, y: -0.5}
+  m_SizeDelta: {x: -40.0325, y: -13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1867778913
 MonoBehaviour:
